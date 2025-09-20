@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+  <body>
+    <input class="text" placeholder="input" onkeydown="typedText();">
+    <p class="typing"></p>
+    <script>
+        function typedText () {
+            const inputElement = document.querySelector('.text');
+
+            let text = inputElement.value;
+            document.querySelector('.typing').innerHTML = text;
+        }
+    </script>
+  </body>
+</html>
