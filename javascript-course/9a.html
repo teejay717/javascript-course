@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+  <body>
+    <p>
+    <button>9a</button>
+    <button class="btn-9b">9b</button>
+    </p>
+    <button class="heads" onclick="
+        document.querySelector('.display').innerHTML = 'You chose: heads'
+    ">heads</button>
+    <button class="tails" onclick="
+        document.querySelector('.display').innerHTML = 'You chose: tails'">tails</button>
+    <p class="display"></p>
+    <script>
+        console.log(document.querySelector('button'));
+        document.querySelector('.btn-9b').innerHTML = '9b done';
+
+
+    </script>
+  </body>
+</html>
