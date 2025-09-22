@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10d</title>
+</head>
+<style>
+    .btn {
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 0, 0);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    .btn2 {
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 0, 0);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    .btn3 {
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 0, 0);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+    .is-toggled {
+        background-color: rgb(241, 241, 241);
+        color: black;
+        font-size: 15px;
+    }
+
+</style>
+<body>
+    <button class="btn" onclick="toggle();">Gaming</button>
+    <button class="btn2" onclick="toggle2();">Music</button>
+    <button class="btn3" onclick="toggle3();">Tech</button>
+
+    <script>
+        function toggle() {
+
+        if (document.querySelector('.btn').classList.contains('is-toggled')) {
+            document.querySelector('.btn').classList.remove('is-toggled')
+        }
+        else {
+            document.querySelector('.btn').classList.add('is-toggled')
+        }
+
+    }
+
+    function toggle2() {
+        if (document.querySelector('.btn2').classList.contains('is-toggled')) {
+            document.querySelector('.btn2').classList.remove('is-toggled')
+        }
+        else {
+            document.querySelector('.btn2').classList.add('is-toggled')
+        }
+    }
+    function toggle3() {
+         if (document.querySelector('.btn3').classList.contains('is-toggled')) {
+            document.querySelector('.btn3').classList.remove('is-toggled')
+        }
+        else {
+            document.querySelector('.btn3').classList.add('is-toggled')
+        }
+        }
+    </script>
+</body>
+</html>
