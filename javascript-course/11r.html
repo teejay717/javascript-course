@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>11r</title>
+  </head>
+  <style>
+
+  </style>
+  <body>
+    <script>
+
+        
+
+        function removeEgg(foods) {
+          let result = [];
+          let removed = 0;
+          
+          for (let i = 0; i < foods.length; i++) {
+
+            if (foods[i] !== 'egg') {
+                result.push(foods[i]);
+            } 
+            else {
+              removed += 1;
+            }
+
+            if (removed === 2) {
+              for (let j = i+1; j < foods.length; j++) {
+                result.push(foods[j]);
+              }
+              break;
+            }
+        } return result;
+        }
+
+        console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+    </script>
+  </body>
+</html>
