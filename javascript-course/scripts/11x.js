@@ -50,6 +50,8 @@ function addTodo() {
     todoList.push({
         //name: name,
         //dueDate: dueDate
+         //name: name,
+        //dueDate: dueDate
         name,
         dueDate
     }
