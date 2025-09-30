@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>12c</title>
+  </head>
+  <style>
+
+  </style>
+  <body>
+    <button class="btn" onclick="clicked();">Add to cart</button>
+    <p class="para"></p>
+    <script>
+        function clicked() {
+            const button = document.querySelector('.para');
+            
+            setTimeout(function () {
+                button.innerHTML = '';
+            }, 2000);
+            button.innerHTML = 'Added'
+        }
+    </script>
+  </body>
+</html>
