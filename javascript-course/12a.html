@@ -9,10 +9,20 @@
   <body>
     <script>
         const add = function(param) {
-            console.log(param);
+            console.log(2+3);
+        }
+        add();
+
+        function runTwice(fun) {
+            fun();
+            fun();
         }
 
-        console.log(add(2+4));
+        runTwice(function(){
+            console.log('12b');
+        })
+
+        runTwice(add);
     </script>
   </body>
 </html>

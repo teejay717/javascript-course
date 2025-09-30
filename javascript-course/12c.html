@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>12c</title>
+  </head>
+  <style>
+
+  </style>
+  <body>
+    <button class="btn" onclick="clicked();">Start</button>
+    <script>
+        function clicked() {
+            const button = document.querySelector('.btn');
+            
+            setTimeout(function () {
+                button.innerHTML = 'Finished!';
+            }, 1000);
+            button.innerHTML = 'Loading...'
+        }
+    </script>
+  </body>
+</html>
