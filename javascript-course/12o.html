@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>12n</title>
+<title>12o</title>
 </head>
 <style>
 
@@ -9,8 +9,10 @@
 <body>
     <script>
         function removeEgg(foods) {
+            let eggsCounter = 0;
             return foods.filter((value, index) => {
-                if (value === 'egg') {
+                if (value === 'egg' && eggsCounter < 2) {
+                    eggsCounter++;
                     return false;
                 } else {
                     return true;

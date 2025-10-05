@@ -1,0 +1,187 @@
+    
+    let scores = JSON.parse(localStorage.getItem('scores')) || {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        };
+        
+    updateScoreElement();
+    /*       hz
+   n c 
+         if (!scores) {
+        scores = {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        }
+    }
+*/
+
+    console.log(scores);
+
+    let isAutoPlaying = false;
+    let intervalId;
+    
+    const autoPlayButtonElement = document.querySelector('.js-auto-play-button');
+
+    autoPlayButtonElement.addEventListener('click', () => {
+        autoPlay();
+    })
+
+    document.querySelector('.reset-score-button').addEventListener('click', () => {
+        resetConfirmation();
+    })
+    
+  
+  
+    document.body.addEventListener('keydown', (event) => {
+        if (event.key === 'a') {
+            autoPlay();
+        }
+        if (event.key === "Backspace") {
+            resetConfirmation();
+        }
+    })
+
+    function autoPlay() {
+        if (!isAutoPlaying) {
+            intervalId = setInterval(() => {
+            const playerMove = pickComputerMove();
+            playGame(playerMove)
+        }, 1000);
+        isAutoPlaying = true;
+        document.querySelector('.js-auto-play-button').innerHTML = "Stop Playing";
+        }
+        else {
+            clearInterval(intervalId);
+            isAutoPlaying = false;
+            document.querySelector('.js-auto-play-button').innerHTML = "Auto Play";
+        }
+    }
+
+    document.querySelector('.js-rock-button')
+        .addEventListener('click', () => {
+            playGame('rock');
+        })
+    document.querySelector('.js-paper-button')
+        .addEventListener('click', () => {
+            playGame('paper');
+        })
+    document.querySelector('.js-scissors-button')
+        .addEventListener('click', () => {
+            playGame('scissors');
+        })
+
+    document.body.addEventListener('keydown', (event) => {
+        if (event.key === 'r') {
+            playGame('rock');
+        } else if (event.key === 'p') {
+            playGame('paper');
+        } else if (event.key === 's') {
+            playGame('scissors');
+        }
+    })
+
+    function playGame(playerMove, wins, losses, ties) {
+        const computerChoice = pickComputerMove();
+
+        let result = '';
+        
+        if (playerMove === 'scissors') {
+        
+            if (computerChoice === 'rock') {
+                result = 'You Lose';
+            }
+            else if (computerChoice === 'paper') {
+                result = 'You Win';
+            }
+            else if (computerChoice === 'scissors') {
+                result = 'Tie';
+            }
+
+        }
+
+        else if (playerMove === 'paper') {
+
+            if (computerChoice === 'rock') {
+                result = 'You Win';
+            }
+            else if (computerChoice === 'paper') {
+                result = 'Tie';
+            }
+            else if (computerChoice === 'scissors') {
+                result = 'You Lose';
+            }
+        
+        }
+
+        else if (playerMove === 'rock') {
+
+            if (computerChoice === 'rock') {
+                result = 'Tie';
+            }
+            else if (computerChoice === 'paper') {
+                result = 'You Lose';
+            }
+            else if (computerChoice === 'scissors') {
+                result = 'You Win';
+            }  
+        }
+
+        if (result === 'You Win') {
+            scores.wins = scores.wins + 1;
+        }
+        else if (result === 'You Lose') {
+            scores.losses = scores.losses + 1; 
+        }
+        else if (result === 'Tie') {
+            scores.ties = scores.ties + 1;
+        }
+
+        localStorage.setItem('scores', JSON.stringify(scores));
+        updateScoreElement();
+
+        document.querySelector('.js-result').innerHTML = result;
+        document.querySelector('.js-moves').innerHTML = `You <img src="images/${playerMove}-emoji.png" class="move-icon"><img src="images/${computerChoice}-emoji.png" class="move-icon">Computer`;
+
+    }   
+    
+    function updateScoreElement () {
+        document.querySelector('.js-score').innerHTML = `Wins: ${scores.wins}, Losses: ${scores.losses}, Ties: ${scores.ties}`;
+    }
+
+    function pickComputerMove() {
+        const randomNumber = Math.random();
+
+        let computerChoice = ''; 
+        
+        if (randomNumber >= 0 && randomNumber < 1/3) {
+            computerChoice = 'rock';
+        } 
+        else if (randomNumber >= 1/3 && randomNumber < 2/3) {
+            computerChoice = 'paper';
+        }
+        else if (randomNumber >= 2/3 && randomNumber < 1) {
+            computerChoice = 'scissors';
+        }
+
+    return computerChoice;
+}
+
+    function resetScore() {
+        scores.wins = 0;
+        scores.losses = 0;
+        scores.ties = 0;
+        localStorage.removeItem('scores');
+        updateScoreElement();
+    }
+
+    function resetConfirmation() {
+        document.querySelector('.confirmation-buttons').innerHTML = `Are you sure you want to reset the score? <button class="yes-button">Yes</button><button class="no-button">No</button>`;
+
+        document.querySelector('.yes-button').addEventListener('click', () => {
+        resetScore(); document.querySelector('.confirmation-buttons').innerHTML = ''});
+
+        document.querySelector('.no-button').addEventListener('click', () => {
+        document.querySelector('.confirmation-buttons').innerHTML = ''});
+    }
