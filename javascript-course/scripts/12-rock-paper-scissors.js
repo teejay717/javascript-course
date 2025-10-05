@@ -6,8 +6,9 @@
         };
         
     updateScoreElement();
-    /*      
-    if (!scores) {
+    /*       hz
+   n c 
+         if (!scores) {
         scores = {
             wins: 0,
             losses: 0,
@@ -24,7 +25,7 @@
 
     function autoPlay() {
         if (!isAutoPlaying) {
-            intervalId = setInterval(function() {
+            intervalId = setInterval(() => {
             const playerMove = pickComputerMove();
             playGame(playerMove)
         }, 1000);
